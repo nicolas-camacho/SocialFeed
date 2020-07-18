@@ -12,6 +12,6 @@ const Container = styled.div`
 
 export default () => (
   <Container>
-    <Feed url='http://api.massrelevance.com/MassRelDemo/kindle.json' number={10} interval={10000} />
+    <Feed url='http://api.massrelevance.com/MassRelDemo/kindle.json' number={10} interval={60000} />
   </Container>
 );
