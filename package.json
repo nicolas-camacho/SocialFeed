@@ -9,6 +9,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "styled-components": "^5.1.1"
@@ -24,13 +25,20 @@
   },
   "babel": {
     "presets": [
-      "@babel/env",
+      [
+        "@babel/env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ],
       "@babel/preset-react"
     ]
   },
   "jest": {
     "setupFilesAfterEnv": [
-      "./testSetupFile.js"
+      "./setupTest.js"
     ]
   }
 }
