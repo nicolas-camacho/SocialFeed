@@ -3,12 +3,30 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //UTILS
 import styled from 'styled-components';
+import moment from 'moment';
 
 const Card = styled.div`
   background-color: #f0ecea;
   border-radius: 10px;
-  padding: 10px;
+  padding: 10px 30px;
   margin: 10px;
+  display: flex;
+  flex-direction: column;
+`
+
+const Header = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+`
+
+const DateBadge = styled.span`
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 12px;
 `
 
 const Post = ({ post }) => {
@@ -21,7 +39,9 @@ const Post = ({ post }) => {
 
   return (
     <Card>
-      <h1>{post.user.name}</h1><span>{post.created_at}</span>
+      <Header>
+        <h2>{post.user.name}</h2><DateBadge>{moment(new Date(post.created_at)).format('YYYY-MM-DD, h:mm a')}</DateBadge>
+      </Header>
       <div dangerouslySetInnerHTML={{ __html: hashtag(post.text) }}></div>
     </Card >
   )

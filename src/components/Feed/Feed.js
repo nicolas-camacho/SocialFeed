@@ -20,11 +20,13 @@ const Feed = ({ url, number, interval }) => {
     getData();
     const mainInterval = setInterval(getData, interval);
     return () => clearInterval(mainInterval)
-  }, []);
+  }, [url, number, interval]);
 
   const getData = async () => {
     let response = await fetch(`${url}?limit=${number}`);
     let data = await response.json();
+    console.log('Fetched')
+    console.log(number)
     setPosts(data);
   };
 
