@@ -1,0 +1,36 @@
+{
+  "name": "SocialFeed",
+  "version": "0.1.0",
+  "description": "",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest --watchAll"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "styled-components": "^5.1.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.5",
+    "@babel/preset-env": "^7.10.4",
+    "@babel/preset-react": "^7.10.4",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "jest": "^26.1.0",
+    "parcel": "^2.0.0-alpha.3.2"
+  },
+  "babel": {
+    "presets": [
+      "@babel/env",
+      "@babel/preset-react"
+    ]
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "./testSetupFile.js"
+    ]
+  }
+}
