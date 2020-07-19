@@ -6,6 +6,7 @@
     "start": "parcel index.html",
     "build": "parcel build index.html",
     "test": "jest",
+    "test:watch": "jest --watchAll",
     "test:coverage": "jest --coverage"
   },
   "license": "MIT",

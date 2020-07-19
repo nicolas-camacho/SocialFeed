@@ -11,11 +11,12 @@ const Feed = ({ url, number, interval }) => {
 
   const [posts, setPosts] = useState([]); //state for set posts that comes from the url/json
   const [loading, setLoading] = useState(false); //state for catch the load of the data
-  const [latest, setLatest] = useState(''); //state for catch the last time that the data was loaded
+  const [latest, setLatest] = useState('Sorry, but no data was Fetched 😓, please verify your setup.'); //state for catch the last time that the data was loaded
   const [errorMessage, setErrorMessage] = useState('') //state for Error handling
   const [page, setPage] = useState(0)
 
   useEffect(() => { //useEffect hook used for setup updateInterval everytime one of the parameters change
+    setPage(0);
     getData();
     const mainInterval = setInterval(getData, interval);
     return () => clearInterval(mainInterval)

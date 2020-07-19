@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import moment from 'moment';
 
 import Post from './Post'
@@ -15,26 +15,30 @@ const postMock = {
 
 describe('Post', () => {
 
+  let shallowWrapper = null
+
+  beforeEach(() => {
+    shallowWrapper = shallow(<Post post={postMock} />)
+  });
+
   it('Renders once <Card /> component', () => {
-    let wrapper = shallow(<Post post={postMock} />)
-    expect(wrapper.find(Card)).toHaveLength(1);
+    expect(shallowWrapper.find(Card)).toHaveLength(1);
   });
 
 
   it('Renders once <HeaderCard /> component', () => {
-    let wrapper = shallow(<Post post={postMock} />)
-    expect(wrapper.find(HeaderCard)).toHaveLength(1);
+    expect(shallowWrapper.find(HeaderCard)).toHaveLength(1);
   });
 
   it('Renders <HeaderCard /> component inside <Card /> component once', () => {
-    let wrapper = shallow(<Post post={postMock} />)
-    expect(wrapper.find(Card).find(HeaderCard)).toHaveLength(1);
+    expect(shallowWrapper.find(Card).find(HeaderCard)).toHaveLength(1);
   });
 
   it('Renders Date Format correctly', () => {
-    let wrapper = shallow(<Post post={postMock} />)
-    expect(moment(wrapper.find(DateBadge).text(), 'DD/MM/YYYY, h:mm a')).toBeTruthy()
+    expect(moment(shallowWrapper.find(DateBadge).text(), 'DD/MM/YYYY, h:mm a')).toBeTruthy()
   });
 
-
+  it('Renders User name correctly', () => {
+    expect(shallowWrapper.find(HeaderCard).find('h2').html()).toContain(postMock.user.name)
+  })
 });
