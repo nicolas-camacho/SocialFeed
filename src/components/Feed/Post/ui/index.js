@@ -14,7 +14,7 @@ const HeaderCard = styled.div`
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 `
 
 const DateBadge = styled.span`

@@ -17,7 +17,7 @@ const Post = ({ post }) => {
   return (
     <Card>
       <HeaderCard>
-        <h2>{post.user.name}</h2><DateBadge>{moment(new Date(post.created_at)).format('YYYY/MM/DD, h:mm a')}</DateBadge>
+        <h2>{post.user.name}</h2><DateBadge>{moment(new Date(post.created_at)).format('DD/MM/YYYY, h:mm a')}</DateBadge>
       </HeaderCard>
       <div dangerouslySetInnerHTML={{ __html: getHashtags(post.text) }}></div>
     </Card >

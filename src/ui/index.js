@@ -6,7 +6,7 @@ const Bar = styled.div`
 `
 
 const Container = styled.div`
-  margin: 20px auto;
+  margin: auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;

@@ -63,24 +63,20 @@ const CustomLabel = styled.label`
   margin-left: 5px;
 `
 
-const ErrorMessage = ({ errors }) => {
-  <p>
-    ⛔ {error.map(error => `${error}, `)}
-  </p>
-}
-
-const Error = styled(ErrorMessage)`
-  color: #cc0033;
-  display: inline-block;
+const ErrorBadge = styled.span`
+  background-color: ${props => props.type === 'error' ? "#ff616f" : "#ffbd45"};
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
+  color: #ffffff;
   font-size: 12px;
-  line-height: 15px;
 `
 
 export {
   SetupBox,
   FormWrapper,
   CustomInput,
-  Error,
+  ErrorBadge,
   FetchButton,
   CustomLabel
 }
