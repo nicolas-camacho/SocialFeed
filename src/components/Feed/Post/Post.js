@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import moment from 'moment';
 
 const Card = styled.div`
-  background-color: #f0ecea;
+  background-color: #e8e8e8;
   border-radius: 10px;
   padding: 10px 30px;
   margin: 10px;

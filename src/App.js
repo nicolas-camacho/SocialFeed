@@ -1,22 +1,9 @@
 //CORE
 import React, { useState } from 'react';
-//UTILS
-import styled from 'styled-components';
 //COMPONENTS
 import Feed from './components/Feed';
-import Form from './components/Form'
-
-const Container = styled.div`
-  margin: 50px auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-`
-const SetupWrapper = styled.div`
-  width: 20%;
-  display: flex;
-  flex-direction: column;
-`
+import Form from './components/Form';
+import { Container, SetupWrapper, Content, Bar } from './ui';
 
 export default () => {
 
@@ -27,13 +14,16 @@ export default () => {
   });
 
   return (
-    <Container>
-      <SetupWrapper>
-        <Form config={config} setConfig={setConfig} />
-      </SetupWrapper>
-      <div style={{ width: '70%' }}>
-        <Feed url={config.url} number={config.limit} interval={config.interval} />
-      </div>
-    </Container>
+    <>
+      <Bar />
+      <Container>
+        <SetupWrapper>
+          <Form config={config} setConfig={setConfig} />
+        </SetupWrapper>
+        <Content>
+          <Feed url={config.url} number={config.limit} interval={config.interval} />
+        </Content>
+      </Container>
+    </>
   )
 };

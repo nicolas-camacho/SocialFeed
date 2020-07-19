@@ -1,7 +1,7 @@
 //CORE
 import React, { useState } from 'react';
 //COMPONENTS
-import { SetupBox, FormWrapper, CustomInput } from './ui'
+import { SetupBox, FormWrapper, CustomInput, Error, FetchButton, CustomLabel } from './ui'
 
 const Form = ({ config, setConfig }) => {
 
@@ -10,12 +10,13 @@ const Form = ({ config, setConfig }) => {
   const [formUrl, setFormUrl] = useState(url);
   const [formLimit, setFormLimit] = useState(limit);
   const [formInterval, setFormInterval] = useState(interval);
+  const [formError, setformError] = useState({
+    status: false,
+    message: []
+  });
 
-  const [errorUrl, setErrorUrl] = useState(null);
-  const [errorLimit, setErrorLimit] = useState(null);
-  const [errorInterval, setErrorInterval] = useState(null);
 
-  const updateConfig = () => {
+  const updateConfig = e => {
     let newConfig = {
       url: formUrl,
       limit: parseInt(formLimit),
@@ -24,18 +25,22 @@ const Form = ({ config, setConfig }) => {
     setConfig(newConfig)
   }
 
-  const handleUrl = value => {
+  const handleError = () => {
+    let newErrorList = formError.message.length
   }
 
   return (
     <div>
-      <h1>Setup</h1>
+      <h1 style={{ marginLeft: '10px' }}>Setup</h1>
       <SetupBox>
         <FormWrapper>
-          <CustomInput value={formUrl} onChange={e => setFormUrl(e.target.value)} type="text" placeholder="URL for json fetch"></CustomInput>
-          <CustomInput value={formInterval} onChange={e => setFormInterval(e.target.value)} type="number" placeholder="Number of post to fetch"></CustomInput>
-          <CustomInput value={formLimit} onChange={e => setFormLimit(e.target.value)} type="number" placeholder="Update Interval"></CustomInput>
-          <button type="button" onClick={() => updateConfig()}>Fetch</button>
+          <CustomLabel for="url">URL</CustomLabel>
+          <CustomInput value={formUrl} onChange={e => setFormUrl(e.target.value)} type="text" placeholder="URL for json fetch" name="url" />
+          <CustomLabel for="interval">Interval</CustomLabel>
+          <CustomInput value={formInterval} onChange={e => setFormInterval(e.target.value)} type="number" placeholder="Update Interval" name="interval" />
+          <CustomLabel for="limit">No. of Post</CustomLabel>
+          <CustomInput value={formLimit} onChange={e => setFormLimit(e.target.value)} type="number" placeholder="Number of post to fetch" name="limit" />
+          <FetchButton type="button" onClick={e => updateConfig(e)}>Fetch 🚀</FetchButton>
         </FormWrapper>
       </SetupBox>
     </div>

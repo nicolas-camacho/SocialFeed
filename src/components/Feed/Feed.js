@@ -2,19 +2,16 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 //UTILS
-import styled from 'styled-components';
+import moment from 'moment';
 //COMPONENTS
 import Post from './Post';
-
-const CenteredContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`
+import { CenteredContainer, UpdateBadge } from './ui';
 
 const Feed = ({ url, number, interval }) => {
 
   const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [latest, setLatest] = useState('');
 
   useEffect(() => {
     getData();
@@ -23,16 +20,21 @@ const Feed = ({ url, number, interval }) => {
   }, [url, number, interval]);
 
   const getData = async () => {
+    setLoading(true)
     let response = await fetch(`${url}?limit=${number}`);
     let data = await response.json();
-    console.log('Fetched')
-    console.log(number)
+    let date = moment().format('h:mm:ss a');
+    setLatest(date);
     setPosts(data);
+    setLoading(false);
   };
 
   return (
     <CenteredContainer>
-      <h1>Feed</h1>
+      <h1 style={{ marginLeft: '10px' }}>Feed</h1>
+      <div style={{ marginBottom: '20px' }}>
+        <UpdateBadge>Last update: {latest}</UpdateBadge>{loading ? <span> ⏲</span> : null}
+      </div>
       {posts ? posts.map((post, index) =>
         <Post
           key={index}
