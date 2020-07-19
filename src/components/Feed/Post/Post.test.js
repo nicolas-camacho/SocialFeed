@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import moment from 'moment';
 
 import Post from './Post'
@@ -14,12 +14,7 @@ const postMock = {
 }
 
 describe('Post', () => {
-
-  let shallowWrapper = null
-
-  beforeEach(() => {
-    shallowWrapper = shallow(<Post post={postMock} />)
-  });
+  const shallowWrapper = shallow(<Post post={postMock} />)
 
   it('Renders once <Card /> component', () => {
     expect(shallowWrapper.find(Card)).toHaveLength(1);
@@ -41,4 +36,5 @@ describe('Post', () => {
   it('Renders User name correctly', () => {
     expect(shallowWrapper.find(HeaderCard).find('h2').html()).toContain(postMock.user.name)
   })
+
 });
