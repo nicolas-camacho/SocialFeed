@@ -9,17 +9,17 @@ import { CenteredContainer, UpdateBadge } from './ui';
 
 const Feed = ({ url, number, interval }) => {
 
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [latest, setLatest] = useState('');
+  const [posts, setPosts] = useState([]); //state for set posts that comes from the url/json
+  const [loading, setLoading] = useState(false); //state for catch the load of the data
+  const [latest, setLatest] = useState(''); //state for catch the last time that the data was loaded
 
-  useEffect(() => {
+  useEffect(() => { //useEffect hook used for setup updateInterval everytime one of the parameters change
     getData();
     const mainInterval = setInterval(getData, interval);
     return () => clearInterval(mainInterval)
   }, [url, number, interval]);
 
-  const getData = async () => {
+  const getData = async () => { //function for fetching the data
     setLoading(true)
     let response = await fetch(`${url}?limit=${number}`);
     let data = await response.json();
@@ -49,12 +49,6 @@ Feed.propTypes = {
   url: PropTypes.string,
   number: PropTypes.number,
   interval: PropTypes.number,
-}
-
-Feed.defaultProps = {
-  url: 'http://api.massrelevance.com/MassRelDemo/kindle.json',
-  number: 10,
-  interval: 60000
 }
 
 export default Feed

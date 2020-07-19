@@ -11,7 +11,7 @@ export default () => {
     url: 'http://api.massrelevance.com/MassRelDemo/kindle.json',
     limit: 3,
     interval: 10000
-  });
+  }); //state of configuration for the Feed component with defautl data
 
   return (
     <>

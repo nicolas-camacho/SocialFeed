@@ -42,7 +42,7 @@ const FetchButton = styled.button`
   margin: 4px;
   padding: 6px 16px;
   align-self: flex-end;
-  background-color: #00e676;
+  background-color: #00c4ff;
   border-radius: 8px;
   font-weight: bold;
   font-size: 16px;
