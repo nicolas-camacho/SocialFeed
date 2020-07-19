@@ -27,8 +27,4 @@ describe('Form', () => {
   it('Renders three <CustomLabel /> components', () => {
     expect(shallowWrapper.find(CustomLabel)).toHaveLength(3);
   })
-
-  it('Renders three <CustomLabel /> components', () => {
-    expect(shallowWrapper.find(CustomLabel)).toHaveLength(3);
-  })
 });
