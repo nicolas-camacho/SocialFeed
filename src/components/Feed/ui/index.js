@@ -20,7 +20,7 @@ const UpdateBadge = styled.span`
 const Banner = styled.div`
   display: flex;
   justify-content: center;
-  justitfy-text: center;
+  align-text: center;
   font-size: 18px;
   background-color: #e8e8e8;
   margin: 10px;

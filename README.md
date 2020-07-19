@@ -13,7 +13,7 @@ interval: "That is the time on milliseconds for update the data",
 
 #Play with it
 
-You play with the component on the following plaground: 
+You play with the component on the following plaground: https://socialfeed-playground.netlify.app
 
 ## Custom port
 
